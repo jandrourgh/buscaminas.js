@@ -1,0 +1,12 @@
+table{
+    border-width : 6px;
+    border-color: black;
+    margin: 20px auto;    
+}
+td{
+    width:80px;
+    height:80px;
+    background-color: blue;
+    border-radius: 15px;
+    text-align:center;
+}
