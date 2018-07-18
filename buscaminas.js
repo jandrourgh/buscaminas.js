@@ -1,4 +1,6 @@
 var DIMENSION = 8;
+var primerClick = false;
+
 window.onload = function(){
     tablero = document.getElementById("tablero");
     llenaTablero();
@@ -12,7 +14,10 @@ window.onload = function(){
             matriz[x][y]['minasAdyacentes'] = 0;
         }
     }
-    colocaMinas(10);
+};
+
+function iniciaPartida(coordenadas){
+    colocaMinas(10, coordenadas);
     for(y =(DIMENSION-1); y>=0; y--){
         for(x = 0; x<DIMENSION; x++){
             var celda = new Array(2);
@@ -27,7 +32,7 @@ window.onload = function(){
             }
         }
     }
-};
+}
 
 function llenaTablero(){
     for(i = 0; i<DIMENSION; i++){
@@ -49,7 +54,11 @@ function click(event){
     var coordenadas = new Array(2);
     coordenadas['x'] = parseInt(event.target.id.charAt(0));  
     coordenadas['y'] = parseInt(event.target.id.charAt(2));
-    console.log(coordenadas['x'] + " " + coordenadas['y']);
+    //console.log(coordenadas['x'] + " " + coordenadas['y']);
+    if(primerClick == false){
+        iniciaPartida(coordenadas);
+        primerClick = true;
+    }
     celdaMatriz = matriz[coordenadas['x']][coordenadas['y']];
     if(event.type == "click"){
         event.target.style.backgroundColor = "blue";
