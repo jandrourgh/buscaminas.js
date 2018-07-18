@@ -74,8 +74,14 @@ function colocaMinas(numero, coordenadasInicio){
     var randX;
     var randY;
     for(var i = 0; i<numero; i++){
-        randY = Math.trunc(Math.random() * DIMENSION);
-        randX = Math.trunc(Math.random() * DIMENSION);
+        do { //generar nuevas coordenadas aleatorias si...
+            randY = Math.trunc(Math.random() * DIMENSION);
+            randX = Math.trunc(Math.random() * DIMENSION);
+        } while (
+            (randX == coordenadasInicio['x']-1 || randX == coordenadasInicio['x'] || randX == coordenadasInicio['x']+1)
+            &&
+            (randY == coordenadasInicio['y']-1 || randY == coordenadasInicio['y'] || randY == coordenadasInicio['y']+1)
+        );
         //console.log(randX + " " + randY);
         if (matriz[randX][randY]['tieneMina'] == false){
             matriz[randX][randY]['tieneMina'] = true;
