@@ -70,7 +70,7 @@ function click(event){
     return false;
 }
 
-function colocaMinas(numero){
+function colocaMinas(numero, coordenadasInicio){
     var randX;
     var randY;
     for(var i = 0; i<numero; i++){
