@@ -1,5 +1,6 @@
-var DIMENSION = 8;
+var DIMENSION = 10;
 var primerClick = false;
+var slider;
 
 window.onload = function(){
     tablero = document.getElementById("tablero");
@@ -14,10 +15,14 @@ window.onload = function(){
             matriz[x][y]['minasAdyacentes'] = 0;
         }
     }
+    slider = document.getElementById("sliderMinas");
+    slider.min = 1;
+    slider.max = (DIMENSION*DIMENSION)/2;
+    slider.oninput = muestraCantidadMinas;
 };
 
 function iniciaPartida(coordenadas){
-    colocaMinas(10, coordenadas);
+    colocaMinas(slider.value, coordenadas);
     for(y =(DIMENSION-1); y>=0; y--){
         for(x = 0; x<DIMENSION; x++){
             var celda = new Array(2);
@@ -54,14 +59,14 @@ function click(event){
     var coordenadas = new Array(2);
     coordenadas['x'] = parseInt(event.target.id.charAt(0));  
     coordenadas['y'] = parseInt(event.target.id.charAt(2));
-    //console.log(coordenadas['x'] + " " + coordenadas['y']);
+    console.log(coordenadas['x'] + " " + coordenadas['y']);
     if(primerClick == false){
         iniciaPartida(coordenadas);
         primerClick = true;
     }
     celdaMatriz = matriz[coordenadas['x']][coordenadas['y']];
     if(event.type == "click"){
-        event.target.style.backgroundColor = "blue";
+        //event.target.style.backgroundColor = "blue";
         //celdaMatriz['clicado'] = true; mejor activar esto después de revelarla
         if(celdaMatriz['tieneMina'] == true){
             alert("BOOM");
@@ -133,9 +138,9 @@ function revelarAdyacentes(coordenadas){
             var celdaPruebaRevelar = new Array(2);
             celdaPruebaRevelar['x'] = revelarX;
             celdaPruebaRevelar['y'] = revelarY;
-            console.log("Probando adyacentes a " + coordenadas['x'] + " " + coordenadas['y'] + ": " + revelarX + " " + revelarY);
+            //console.log("Probando adyacentes a " + coordenadas['x'] + " " + coordenadas['y'] + ": " + revelarX + " " + revelarY);
             if(existeCelda(celdaPruebaRevelar) && matriz[celdaPruebaRevelar['x']][celdaPruebaRevelar['y']]['clicado'] == false){
-                console.log("existe la celda " + celdaPruebaRevelar['x'] + " " +  celdaPruebaRevelar['y']);
+                //console.log("existe la celda " + celdaPruebaRevelar['x'] + " " +  celdaPruebaRevelar['y']);
                 if(matriz[celdaPruebaRevelar['x']][celdaPruebaRevelar['y']]['minasAdyacentes'] == 0){
                     matriz[celdaPruebaRevelar['x']][celdaPruebaRevelar['y']]['clicado'] = true;
                     document.getElementById(revelarX + "-" + revelarY).style.backgroundColor = 'yellow';
@@ -156,4 +161,9 @@ function existeCelda(coordenadas){
         //console.log(coordenadas['x'] + " " + coordenadas['y'] + " no existe");
         return false;
     }
+}
+
+function muestraCantidadMinas(event){
+    "Numero de minas: " + event.target.value;
+    document.getElementById("textoMinas").innerHTML = "Numero de minas: " + event.target.value;
 }

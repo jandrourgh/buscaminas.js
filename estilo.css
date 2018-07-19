@@ -4,9 +4,27 @@ table{
     margin: 20px auto;    
 }
 td{
-    width:80px;
-    height:80px;
+    width:60px;
+    height:60px;
     background-color: blue;
+    color:blue;
     border-radius: 15px;
     text-align:center;
+    font-size:2em;
+}
+#sliderMinas{
+    width:50%;
+}
+header{
+    text-align: center;
+    margin:20px auto;
+}
+
+::-moz-selection{
+    color:inherit;
+    background:inherit;
+}
+::selection{
+    color:inherit;
+    background:inherit;
 }
