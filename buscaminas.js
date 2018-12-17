@@ -167,3 +167,18 @@ function muestraCantidadMinas(event){
     "Numero de minas: " + event.target.value;
     document.getElementById("textoMinas").innerHTML = "Numero de minas: " + event.target.value;
 }
+
+//elegir dimensión del tablero
+//  en función de la dimensión del tablero establecer el máximo de minas
+//  si cambia el número de minas actualizar texto
+//  si cambia la dimensión, actualizar texto y máximo de número de minas
+
+//al pulsar el botón
+//  ocultar el header y mostrar el section
+//  mostrar 0/numMinas
+
+//click derecho
+//  colocar manchurrón
+//  aumentar numero de minas colocadas
+
+//

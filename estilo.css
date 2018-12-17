@@ -1,3 +1,9 @@
+header div{
+    width:40%;
+    margin:auto;
+
+}
+
 table{
     border-width : 6px;
     border-color: black;
@@ -12,7 +18,7 @@ td{
     text-align:center;
     font-size:2em;
 }
-#sliderMinas{
+input{
     width:50%;
 }
 header{

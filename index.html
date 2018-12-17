@@ -3,15 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="buscaminas.js"></script>
     <link rel="stylesheet" href="estilo.css">
     <title>Buscaminas.js</title>
 </head>
 <body>
     <header>
-        <input type="range" name="numMinas" id="sliderMinas" min="" max="">
-        <p id="textoMinas">Ajusta el número de minas con el Slider</p>
+        <div>
+            <label for="numMinas">Número de minas: </label>
+            <br>
+            <input type="range" name="numMinas" id="sliderMinas" min="" max="">
+        </div>
+        <div>
+            <label for="dimension">Dimensión del tablero: </label>
+            <br>
+            <input type="range" name="dimension" id="sliderDimension" value="10" min="5" max="20">
+        </div>
+        <input type="button" name="empezarPartida" id="botonEmpezar" value="Empezar partida">
     </header>
     <section id="centro">
         <table id="tablero">
